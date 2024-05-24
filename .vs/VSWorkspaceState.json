@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src"
+    "\\src",
+    "\\src\\algoritma"
   ],
-  "SelectedNode": "\\src\\Form1.cs",
+  "SelectedNode": "\\src\\App.config",
   "PreviewInSolutionExplorer": false
 }

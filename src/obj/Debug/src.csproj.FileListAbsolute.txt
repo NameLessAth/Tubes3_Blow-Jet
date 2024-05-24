@@ -8,3 +8,14 @@ C:\Ariel\Kuliah\MatKul\Semester 3\Strategi Algoritma\Tubes 3\src\obj\Debug\src.c
 C:\Ariel\Kuliah\MatKul\Semester 3\Strategi Algoritma\Tubes 3\src\obj\Debug\src.exe
 C:\Ariel\Kuliah\MatKul\Semester 3\Strategi Algoritma\Tubes 3\src\obj\Debug\src.pdb
 C:\Ariel\Kuliah\MatKul\Semester 3\Strategi Algoritma\Tubes 3\src\obj\Debug\src.MainForm.resources
+D:\OneDrive - Institut Teknologi Bandung\COLLEGE\SEMESTER 4\Strategi Algoritma\Tubes3\Tubes3_Blow-Jet\src\obj\Debug\src.csproj.AssemblyReference.cache
+D:\OneDrive - Institut Teknologi Bandung\COLLEGE\SEMESTER 4\Strategi Algoritma\Tubes3\Tubes3_Blow-Jet\src\obj\Debug\src.csproj.SuggestedBindingRedirects.cache
+D:\OneDrive - Institut Teknologi Bandung\COLLEGE\SEMESTER 4\Strategi Algoritma\Tubes3\Tubes3_Blow-Jet\src\obj\Debug\src.exe
+D:\OneDrive - Institut Teknologi Bandung\COLLEGE\SEMESTER 4\Strategi Algoritma\Tubes3\Tubes3_Blow-Jet\src\obj\Debug\src.pdb
+D:\OneDrive - Institut Teknologi Bandung\COLLEGE\SEMESTER 4\Strategi Algoritma\Tubes3\Tubes3_Blow-Jet\src\obj\Debug\src.MainForm.resources
+D:\OneDrive - Institut Teknologi Bandung\COLLEGE\SEMESTER 4\Strategi Algoritma\Tubes3\Tubes3_Blow-Jet\src\obj\Debug\src.Properties.Resources.resources
+D:\OneDrive - Institut Teknologi Bandung\COLLEGE\SEMESTER 4\Strategi Algoritma\Tubes3\Tubes3_Blow-Jet\src\obj\Debug\src.csproj.GenerateResource.cache
+D:\OneDrive - Institut Teknologi Bandung\COLLEGE\SEMESTER 4\Strategi Algoritma\Tubes3\Tubes3_Blow-Jet\src\bin\Debug\src.exe.config
+D:\OneDrive - Institut Teknologi Bandung\COLLEGE\SEMESTER 4\Strategi Algoritma\Tubes3\Tubes3_Blow-Jet\src\bin\Debug\src.exe
+D:\OneDrive - Institut Teknologi Bandung\COLLEGE\SEMESTER 4\Strategi Algoritma\Tubes3\Tubes3_Blow-Jet\src\bin\Debug\src.pdb
+D:\OneDrive - Institut Teknologi Bandung\COLLEGE\SEMESTER 4\Strategi Algoritma\Tubes3\Tubes3_Blow-Jet\src\obj\Debug\src.csproj.CoreCompileInputs.cache
