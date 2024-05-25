@@ -4,7 +4,8 @@ using SixLabors.ImageSharp.PixelFormats;
 namespace src{
     class Converter{
         public static void Main(String[] args){
-            Console.WriteLine(KMPString.KMPmatching("halohalohalo", "hall"));
+            // ini ngeconvert image ke 
+            Console.WriteLine(ConvertImageTo30Ascii("../test/SOCOFing/Real/1__M_Left_index_finger.BMP"));
         }
 
         static String ImageToBinaryString(string imagePath){
@@ -34,6 +35,38 @@ namespace src{
                 temp += (char)asciitemp;
             } 
             return temp;
+        }
+
+        public static string FindMostUniqueSubstring(string input){
+            Dictionary<char, int> charCount = new Dictionary<char, int>();
+            int maxUnique = 0;
+            int bestI = 0;
+
+            for (int i = 0; i < 30; i++){
+                if (!charCount.ContainsKey(input[i])) charCount[input[i]] = 0;
+                charCount[input[i]]++;
+            }
+            maxUnique = charCount.Count;
+
+            for (int i = 30; i < input.Length; i++){
+                char outgoingChar = input[i - 30];
+                charCount[outgoingChar]--;
+                if (charCount[outgoingChar] == 0) charCount.Remove(outgoingChar);
+                char incomingChar = input[i];
+                if (!charCount.ContainsKey(incomingChar)) charCount[incomingChar] = 0;
+                charCount[incomingChar]++;
+                
+                if (charCount.Count > maxUnique) {
+                    maxUnique = charCount.Count;
+                    bestI = i - 30 + 1;
+                }
+            }
+
+            return input.Substring(bestI, 30);
+        }
+
+        public static string ConvertImageTo30Ascii(string imagepath){
+            return FindMostUniqueSubstring(BinaryToASCII(ImageToBinaryString(imagepath)));
         }
     }
 }
