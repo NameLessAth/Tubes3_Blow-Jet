@@ -5,13 +5,13 @@ using System.Data.SQLite;
 namespace src{
     class DatabaseManager{
         public static void Main(string[] args){
-            Console.Write(ConverterImage.ImageToBinaryString("../test/SOCOFing/Altered/Altered-Easy/5__M_Right_index_finger_CR.BMP"));
+            Console.Write(ConverterImage.ImageToBinaryString("../test/SOCOFing/Altered/Altered-Easy/1__M_Left_index_finger_CR.BMP"));
         }
         public static List<(String, String)> GetSidikJari(){
             // try{
             //     Tes.ConvertSqlToDb("db/coba.sql", "db/coba.db");
             // } catch (Exception e) {Console.WriteLine(e.Message);}
-            List<(String, String)> temp = []; 
+            List<(String, String)> temp = new List<(string, string)>(); 
             using (var connection = new SQLiteConnection("Data Source=db/test.db;Version=3;"))
             {
                 connection.Open();  
@@ -38,6 +38,46 @@ namespace src{
                 }   
             } return temp;
         }
+        public static List<(String, String, String, String, String, String, String, String, String, String, String)> GetBiodata(){
+            // try{
+            //     Tes.ConvertSqlToDb("db/coba.sql", "db/coba.db");
+            // } catch (Exception e) {Console.WriteLine(e.Message);}
+            List<(String, String, String, String, String, String, String, String, String, String, String)> temp = new List<(string, string, string, string, string, string, string, string, string, string, string)>(); 
+            using (var connection = new SQLiteConnection("Data Source=db/test.db;Version=3;"))
+            {
+                connection.Open();  
+                
+                // Define the SQL query
+                string query = "SELECT * FROM biodata";
+
+                // Create a command
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    // Execute the query and get a data reader
+                    using (var reader = command.ExecuteReader())
+                    {
+                        // Read the data
+                        while (reader.Read())
+                        {
+                        // Example of reading columns by name
+                        string nik = reader.GetString(reader.GetOrdinal("NIK"));
+                        string name = reader.GetString(reader.GetOrdinal("nama"));
+                        string tempat_lahir = reader.GetString(reader.GetOrdinal("tempat_lahir"));
+                        string tanggal_lahir = reader.GetString(reader.GetOrdinal("tanggal_lahir"));
+                        string jenis_kelamin = reader.GetString(reader.GetOrdinal("jenis_kelamin"));
+                        string golongan_darah = reader.GetString(reader.GetOrdinal("golongan_darah"));
+                        string alamat = reader.GetString(reader.GetOrdinal("alamat"));
+                        string agama = reader.GetString(reader.GetOrdinal("agama"));
+                        string kawin = reader.GetString(reader.GetOrdinal("status_perkawinan"));
+                        string pekerjaan = reader.GetString(reader.GetOrdinal("pekerjaan"));
+                        string kwn = reader.GetString(reader.GetOrdinal("kewarganegaraan"));
+                        temp.Add((nik, name, tempat_lahir, tanggal_lahir, jenis_kelamin, golongan_darah, alamat, agama, kawin, pekerjaan, kwn));
+                        } 
+                    }
+                }   
+            } return temp;
+        }
+
         static void ConvertSqlToDb(string sqlFilePath, string dbFilePath)
         {
             // Create and open the SQLite database
