@@ -3,7 +3,7 @@ using System.Collections;
 namespace src{
     class KMPString{
         public static List<int> BuildKMP(String arg){
-            List<int> temp = [];
+            List<int> temp = new List<int>();   
             temp.Add(0);
             int j = 0, i = 1;
             while (i < arg.Length){
