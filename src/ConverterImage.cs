@@ -33,13 +33,7 @@ namespace src{
                 int longestcs = -1;
                 foreach((String, String) imageItr in listSidikJari){
                     String temp = ImageToBinaryString(imageItr.Item1);
-                    int[, ] L = new int[temp.Length + 1, asciiFull.Length + 1];
-                    for (int i = 0; i <= temp.Length; i++) {
-                        for (int j = 0; j <= asciiFull.Length; j++) {
-                            L[i, j] = -1;
-                        }
-                    } 
-                    int lcsRes = LCS.lcsDP(temp.ToCharArray(), asciiFull.ToCharArray(), temp.Length, asciiFull.Length, L);
+                    int lcsRes = LCS.lcsDP(temp, asciiFull);
                     if (lcsRes > longestcs){
                         longestcs = lcsRes; result = imageItr;
                     } 
