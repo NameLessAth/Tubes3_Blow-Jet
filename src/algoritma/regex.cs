@@ -5,9 +5,10 @@ namespace StringConversion
 {
     class Program
     {
-        static void Main(string[] args)
+        // converts angka to string
+        public static void test()
         {
-            string input = "m42w4Rd_4Njay";
+            string input = "m2w4Rd_Njay";
             string pattern = "[0123456]|[a-z]";
             string resultangka = Regex.Replace(input, pattern, new MatchEvaluator(replacement));
 
@@ -15,10 +16,10 @@ namespace StringConversion
 
             Console.WriteLine("original string: " + input);
             Console.WriteLine("converted string: " + resulttitle);
-            Console.ReadKey();
         }
 
-        static string replacement(Match match)
+        // Regex.match to convert angka to char
+        public static string replacement(Match match)
         {
             switch (match.Value)
             {
