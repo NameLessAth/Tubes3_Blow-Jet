@@ -5,7 +5,7 @@ using System.Data.SQLite;
 namespace src{
     class DatabaseManager{
         public static void Main(string[] args){
-            Console.Write(Converter.selectBerkasFromFingerprint("../test/SOCOFing/Altered/Altered-Easy/5__M_Right_index_finger_CR.BMP", "KMP"));
+            Console.Write(ConverterImage.ImageToBinaryString("../test/SOCOFing/Altered/Altered-Easy/5__M_Right_index_finger_CR.BMP"));
         }
         public static List<(String, String)> GetSidikJari(){
             // try{

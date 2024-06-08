@@ -1,10 +1,14 @@
+using System;
+using System.IO;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.PixelFormats;
+using SixLabors.ImageSharp.Processing;
+using SixLabors.ImageSharp.Processing.Processors.Transforms;
 using Microsoft.EntityFrameworkCore;
 
 namespace src{
-    class Converter{
-        public static (String, double) selectBerkasFromFingerprint(String imagePath, String algo){
+    class ConverterImage{
+        public static (String, double) SelectBerkasFromFingerprint(String imagePath, String algo){
             // ini ngeconvert ke 30 ascii querynya
             String asciiFull = ImageToBinaryString(imagePath);
             String asciiQuery = FindMostUniqueSubstring(asciiFull);
@@ -19,7 +23,7 @@ namespace src{
                 if (algo == "KMP" && KMPString.KMPmatching(ImageToBinaryString(imageItr.Item1), asciiQuery) != -1){
                     result = imageItr;
                     cocok = 1;
-                } else if (algo == "BM" && BMString.BMmatching(ImageToBinaryString(imageItr.Item1), asciiQuery) != -1){
+                } else if (algo == "BM" && BoyerMooreString.Search(ImageToBinaryString(imageItr.Item1), asciiQuery) != -1){
                     result = imageItr;
                     cocok = 1;
                 }
@@ -49,10 +53,9 @@ namespace src{
             return (result.Item2, cocok);
         }
 
-        static String ImageToBinaryString(string imagePath){
+        public static String ImageToBinaryString(string imagePath){
             using Image<Rgba32> image = Image.Load<Rgba32>(imagePath);
             String binaryTemp = "";
-            
             for (int i = 0; i < image.Height; i++){
                 for (int j = 0; j < image.Width; j++){
                     Rgba32 pixelColor = image[j, i];
@@ -62,7 +65,9 @@ namespace src{
             }
             return binaryTemp;
         }    
-
+        static int GetGrayValue(Rgba32 pixelColor){
+            return Convert.ToInt32(pixelColor.R * 0.299f + pixelColor.G * 0.587f + pixelColor.B * 0.114f);
+        }
         public static string FindMostUniqueSubstring(string input){
             Dictionary<char, int> charCount = new Dictionary<char, int>();
             int maxUnique = 0;
