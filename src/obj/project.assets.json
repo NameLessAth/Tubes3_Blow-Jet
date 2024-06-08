@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    "net8.0": {
+    "net7.0": {
       "Microsoft.NETCore.Platforms/3.1.0": {
         "type": "package",
         "compile": {
@@ -41,12 +41,12 @@
       "Microsoft.Win32.SystemEvents/8.0.0": {
         "type": "package",
         "compile": {
-          "lib/net8.0/Microsoft.Win32.SystemEvents.dll": {
+          "lib/net7.0/Microsoft.Win32.SystemEvents.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net8.0/Microsoft.Win32.SystemEvents.dll": {
+          "lib/net7.0/Microsoft.Win32.SystemEvents.dll": {
             "related": ".xml"
           }
         },
@@ -54,7 +54,7 @@
           "buildTransitive/net6.0/_._": {}
         },
         "runtimeTargets": {
-          "runtimes/win/lib/net8.0/Microsoft.Win32.SystemEvents.dll": {
+          "runtimes/win/lib/net7.0/Microsoft.Win32.SystemEvents.dll": {
             "assetType": "runtime",
             "rid": "win"
           }
@@ -145,12 +145,12 @@
           "Microsoft.Win32.SystemEvents": "8.0.0"
         },
         "compile": {
-          "lib/net8.0/System.Drawing.Common.dll": {
+          "lib/net7.0/System.Drawing.Common.dll": {
             "related": ".pdb;.xml"
           }
         },
         "runtime": {
-          "lib/net8.0/System.Drawing.Common.dll": {
+          "lib/net7.0/System.Drawing.Common.dll": {
             "related": ".pdb;.xml"
           }
         },
@@ -613,36 +613,38 @@
     }
   },
   "projectFileDependencyGroups": {
-    "net8.0": [
+    "net7.0": [
       "SixLabors.ImageSharp >= 3.1.4",
       "System.Data.SqlClient >= 4.8.6",
       "System.Drawing.Common >= 8.0.5"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ACER\\.nuget\\packages\\": {}
+    "C:\\Users\\Eduard\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Athaullah\\School\\ITB\\INFORMATIKA\\4th Semester\\Stima\\Tubes-3\\src\\src.csproj",
+      "projectUniqueName": "D:\\OneDrive - Institut Teknologi Bandung\\COLLEGE\\SEMESTER 4\\Strategi Algoritma\\Tubes3\\Tubes3_Blow-Jet\\src\\src.csproj",
       "projectName": "src",
-      "projectPath": "D:\\Athaullah\\School\\ITB\\INFORMATIKA\\4th Semester\\Stima\\Tubes-3\\src\\src.csproj",
-      "packagesPath": "C:\\Users\\ACER\\.nuget\\packages\\",
-      "outputPath": "D:\\Athaullah\\School\\ITB\\INFORMATIKA\\4th Semester\\Stima\\Tubes-3\\src\\obj\\",
+      "projectPath": "D:\\OneDrive - Institut Teknologi Bandung\\COLLEGE\\SEMESTER 4\\Strategi Algoritma\\Tubes3\\Tubes3_Blow-Jet\\src\\src.csproj",
+      "packagesPath": "C:\\Users\\Eduard\\.nuget\\packages\\",
+      "outputPath": "D:\\OneDrive - Institut Teknologi Bandung\\COLLEGE\\SEMESTER 4\\Strategi Algoritma\\Tubes3\\Tubes3_Blow-Jet\\src\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ACER\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Eduard\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net8.0"
+        "net7.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
+        "net7.0": {
+          "targetAlias": "net7.0",
           "projectReferences": {}
         }
       },
@@ -650,16 +652,11 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
-      "net8.0": {
-        "targetAlias": "net8.0",
+      "net7.0": {
+        "targetAlias": "net7.0",
         "dependencies": {
           "SixLabors.ImageSharp": {
             "target": "Package",
@@ -690,7 +687,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

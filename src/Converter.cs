@@ -3,10 +3,10 @@ using SixLabors.ImageSharp.PixelFormats;
 
 namespace src{
     class Converter{
-        public static void Main(String[] args){
-            // ini ngeconvert image ke 
-            Console.WriteLine(ConvertImageTo30Ascii("../test/SOCOFing/Real/1__M_Left_index_finger.BMP"));
-        }
+        // public static void Main(String[] args){
+        //     // ini ngeconvert image ke 
+        //     Console.WriteLine(ConvertImageTo30Ascii("../test/SOCOFing/Real/1__M_Left_index_finger.BMP"));
+        // }
 
         static String ImageToBinaryString(string imagePath){
             using Image<Rgba32> image = Image.Load<Rgba32>(imagePath);
