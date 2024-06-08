@@ -4,33 +4,49 @@ using Microsoft.EntityFrameworkCore;
 
 namespace src{
     class Converter{
-        public static String selectBerkasFromFingerprint(String imagePath, String algo){
+        public static (String, double) selectBerkasFromFingerprint(String imagePath, String algo){
             // ini ngeconvert ke 30 ascii querynya
-            String asciiQuery = ConvertImageTo30Ascii(imagePath);
+            String asciiFull = ImageToBinaryString(imagePath);
+            String asciiQuery = FindMostUniqueSubstring(asciiFull);
             // buat result (image path yang akan dipilih terakhir, nantinya jadi nama orangnya)
-            String result = "";
+            (String, String) result = ("", "");
+            // buat persentase kecocokan
+            double cocok = 0;
             // temporary, harusnya list of `berkas_citra` di sql nya
-            List<String> a = []; 
+            List<(String, String)> a = DatabaseManager.GetSidikJari(); 
             // coba pake kmp/bm dulu
-            foreach (String imageItr in a){
-                if (algo == "KMP" && KMPString.KMPmatching(ImageToBinaryString(imageItr), asciiQuery) != -1){
+            foreach ((String, String) imageItr in a){
+                if (algo == "KMP" && KMPString.KMPmatching(ImageToBinaryString(imageItr.Item1), asciiQuery) != -1){
                     result = imageItr;
-                } else if (algo == "BM" && BMString.BMmatching(ImageToBinaryString(imageItr), asciiQuery) != -1){
+                    cocok = 1;
+                } else if (algo == "BM" && BMString.BMmatching(ImageToBinaryString(imageItr.Item1), asciiQuery) != -1){
                     result = imageItr;
+                    cocok = 1;
                 }
             } 
             // kalo kmp/bm gadapet, baru nyoba pake lcs, cari yang paling panjang
-            int longestcs = -1;
-            foreach(String imageItr in a){
-                String temp = ConvertImageTo30Ascii(imageItr);
-                int lcsRes = LCS.lcsDP(temp.ToCharArray(), asciiQuery.ToCharArray(), temp.Length, asciiQuery.Length, new int[temp.Length+1, asciiQuery.Length+1]);
-                if (lcsRes > longestcs){
-                    longestcs = lcsRes; result = imageItr;
-                }
+            if (result.Item1 == ""){
+                int longestcs = -1;
+                foreach((String, String) imageItr in a){
+                    String temp = imageItr.Item1;
+                    int[, ] L = new int[temp.Length + 1, asciiFull.Length + 1];
+                    for (int i = 0; i <= temp.Length; i++) {
+                        for (int j = 0; j <= asciiFull.Length; j++) {
+                            L[i, j] = -1;
+                        }
+                    } 
+                    int lcsRes = LCS.lcsDP(temp.ToCharArray(), asciiFull.ToCharArray(), temp.Length, asciiFull.Length, L);
+                    if (lcsRes > longestcs){
+                        longestcs = lcsRes; result = imageItr;
+                    } 
+                } 
+                cocok = longestcs/Convert.ToDouble(Math.Min(asciiFull.Length, result.Item1.Length)); 
+                
             }
             // di sini query resultnya, terus return nama yang ada di resultnya
             // placeholder
-            return result;
+            
+            return (result.Item2, cocok);
         }
 
         static String ImageToBinaryString(string imagePath){

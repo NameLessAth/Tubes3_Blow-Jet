@@ -3,8 +3,6 @@ using System.Drawing;
 
 namespace src{
     class LCS{
-
-        // credits : GeeksForGeekss
         public static int lcsDP(char[] X, char[] Y, int m, int n, int[, ] L){
             if (m == 0 || n == 0) return 0;
             if (L[m, n] != -1) return L[m, n];
@@ -38,7 +36,7 @@ namespace src{
         //             L[i, j] = -1;
         //         }
         //     }
-        //     Console.Write("Length of LCS is" + " " + lcs(X, Y, m, n, L));
+        //     Console.Write("Length of LCS is" + " " + lcsDP(X, Y, m, n, L));
         // }
     }
 

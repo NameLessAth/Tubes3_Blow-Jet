@@ -3,8 +3,11 @@ using System.Data.SQLite;
 
 
 namespace src{
-    class Tes{
+    class DatabaseManager{
         public static void Main(string[] args){
+            Console.Write(Converter.selectBerkasFromFingerprint("../test/SOCOFing/Altered/Altered-Easy/5__M_Right_index_finger_CR.BMP", "KMP"));
+        }
+        public static List<(String, String)> GetSidikJari(){
             // try{
             //     Tes.ConvertSqlToDb("db/coba.sql", "db/coba.db");
             // } catch (Exception e) {Console.WriteLine(e.Message);}
@@ -33,7 +36,7 @@ namespace src{
                         } 
                     }
                 }   
-            } 
+            } return temp;
         }
         static void ConvertSqlToDb(string sqlFilePath, string dbFilePath)
         {
