@@ -17,9 +17,9 @@ namespace src{
             // buat persentase kecocokan
             double cocok = 0;
             // temporary, harusnya list of `berkas_citra` di sql nya
-            List<(String, String)> a = DatabaseManager.GetSidikJari(); 
+            List<(String, String)> listSidikJari = DatabaseManager.GetSidikJari(); 
             // coba pake kmp/bm dulu
-            foreach ((String, String) imageItr in a){
+            foreach ((String, String) imageItr in listSidikJari){
                 if (algo == "KMP" && KMPString.KMPmatching(ImageToBinaryString(imageItr.Item1), asciiQuery) != -1){
                     result = imageItr;
                     cocok = 1;
@@ -31,8 +31,8 @@ namespace src{
             // kalo kmp/bm gadapet, baru nyoba pake lcs, cari yang paling panjang
             if (result.Item1 == ""){
                 int longestcs = -1;
-                foreach((String, String) imageItr in a){
-                    String temp = imageItr.Item1;
+                foreach((String, String) imageItr in listSidikJari){
+                    String temp = ImageToBinaryString(imageItr.Item1);
                     int[, ] L = new int[temp.Length + 1, asciiFull.Length + 1];
                     for (int i = 0; i <= temp.Length; i++) {
                         for (int j = 0; j <= asciiFull.Length; j++) {
@@ -56,6 +56,40 @@ namespace src{
         public static String ImageToBinaryString(string imagePath){
             using Image<Rgba32> image = Image.Load<Rgba32>(imagePath);
             String binaryTemp = "";
+
+            int width = image.Width;
+            int height = image.Height;
+
+            // Define a threshold for detecting altered regions
+            int threshold = 50;
+
+            // looping
+            for (int y = 1; y < height - 1; y++){
+                for (int x = 1; x < width - 1; x++){
+                    Rgba32 pixel = image[x, y];
+                    int grayValue = (int)(pixel.R * 0.299 + pixel.G * 0.587 + pixel.B * 0.114);
+
+                    // Check neighboring pixels
+                    int[] neighbors = new int[8];
+                    neighbors[0] = GetGrayValue(image[x - 1, y - 1]);
+                    neighbors[1] = GetGrayValue(image[x, y - 1]);
+                    neighbors[2] = GetGrayValue(image[x + 1, y - 1]);
+                    neighbors[3] = GetGrayValue(image[x - 1, y]);
+                    neighbors[4] = GetGrayValue(image[x + 1, y]);
+                    neighbors[5] = GetGrayValue(image[x - 1, y + 1]);
+                    neighbors[6] = GetGrayValue(image[x, y + 1]);
+                    neighbors[7] = GetGrayValue(image[x + 1, y + 1]);
+
+                    int avgNeighborValue = 0;
+                    for (int i = 0; i < neighbors.Length; i++) avgNeighborValue += neighbors[i];
+
+                    avgNeighborValue /= neighbors.Length;
+
+                    if (Math.Abs(grayValue - avgNeighborValue) > threshold){
+                        image[x, y] =  new Rgba32((byte)avgNeighborValue, (byte)avgNeighborValue, (byte)avgNeighborValue);
+                    }
+                }
+            } image.Save("../coba/halo.png");
             for (int i = 0; i < image.Height; i++){
                 for (int j = 0; j < image.Width; j++){
                     Rgba32 pixelColor = image[j, i];
