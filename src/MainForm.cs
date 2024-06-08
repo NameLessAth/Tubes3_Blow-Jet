@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using StringConversion;
+using System.Diagnostics;
+using System.Data.SQLite;
+using System.Collections.Generic;
+using System.IO;
 
 namespace src
 {
@@ -16,7 +12,42 @@ namespace src
         private String opsi_pencarian;
         public MainForm()
         {
-            StringConversion.Program.test();
+            Directory.SetCurrentDirectory("../../");
+            List<(String, String)> temp = new List<(string, string)>();
+            var connection = new SQLiteConnection("Data Source=db/test.db;Version=3;Journal Mode=Off",true);
+            try
+            {
+                connection.Open();
+            } catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return;
+            }
+
+            // Define the SQL query
+            string query = "SELECT * FROM sidik_jari";
+
+            // Create a command
+            var command = new SQLiteCommand(query, connection);
+
+            // Execute the query and get a data reader
+            var reader = command.ExecuteReader();
+                
+            // Read the data
+            while (reader.Read())
+            {
+                // Example of reading columns by name
+                string berkas = reader.GetString(reader.GetOrdinal("berkas_citra"));
+                string name = reader.GetString(reader.GetOrdinal("nama"));
+                // Console.WriteLine(berkas + " " + name);
+                temp.Add((berkas, name));
+            }
+
+            //foreach ((String,String) s in temp)
+            //{
+            //    Console.WriteLine(s.Item1, s.Item2);
+            //}
+            
             this.opsi_pencarian = "BM";
             InitializeComponent();
         }
@@ -42,7 +73,7 @@ namespace src
                 openFileDialog.CheckFileExists = true;
                 openFileDialog.AddExtension = true;
                 openFileDialog.Multiselect = true;
-                openFileDialog.Filter = "Image files (*.JPG;*.JPEG;*.PNG)|*.JPG;*.JPEG;*.PNG";
+                openFileDialog.Filter = "Image files (*.JPG;*.JPEG;*.PNG;*.BMP)|*.JPG;*.JPEG;*.PNG;*.BMP";
 
                 if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
@@ -56,6 +87,32 @@ namespace src
                 MessageBox.Show("Error");
             }
             
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (pictureBox2.ImageLocation is null)
+            {
+                MessageBox.Show("Citra Sidik Jari belum dipilih");
+                return;
+            }
+
+            var timer = new Stopwatch();
+            timer.Start();
+            (String, double) nama = ("",0.0);
+            Console.WriteLine(pictureBox2.ImageLocation);
+            nama = Converter.selectBerkasFromFingerprint(pictureBox2.ImageLocation, this.opsi_pencarian);
+            timer.Stop();
+
+            pictureBox1.ImageLocation = nama.Item1;
+            String persentase = (nama.Item2 * 100).ToString() + "%";
+
+            TimeSpan elapsed = timer.Elapsed;
+            String waktu = elapsed.ToString(@"m\:ss\.fff");
+
+            label2.Text = "Persentase kecocokan : " + persentase;
+            label1.Text = "Waktu pencarian : " + waktu;
+
         }
     }
 }
