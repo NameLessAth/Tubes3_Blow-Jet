@@ -19,10 +19,10 @@ Tugas Besar 3 IF2211 Strategi Algoritma - String Matching dan Regex
 * [Dependencies](#informasi-tambahan)
 * [Features](#fitur-utama)
 * [Setup](#setup)
-* [Cara Penggunaan](#cara-menjalankan-program)
+* [Cara Penggunaan](#petunjuk-cara-menjalankan-program-dan-lainnya)
 
 ## Deskripsi Singkat
-Program ini merupakan tugas besar 3 dari mata kuliah IF2211 Strategi Algoritma. Program ini berfungsi untuk mencari identitas dari pemilik sidik jari yang di-input oleh pengguna. Pengguna dapat memilih algoritma pattern matching yang digunakan; antara algoritma Knuth Morris Pratt atau Boyer Moore. Program juga menggunakan regular expression dalam penelusuran basis data, yaitu untuk mencocokkan data yang benar dengan data yang corrupt.
+Program ini merupakan tugas besar 3 dari mata kuliah IF2211 Strategi Algoritma. Program ini berfungsi untuk Mencari identitas dari pemilik sidik jari yang di-input oleh pengguna. 
 
 ## Informasi Tambahan
 - Program dibuat dengan : dotnet 8.0.206
@@ -37,6 +37,7 @@ Program ini merupakan tugas besar 3 dari mata kuliah IF2211 Strategi Algoritma. 
 ## Setup
 1. Program menggunakan relative pathing dan asumsi path pada berkas_citra di database berupa `../test/SOCOFing/`. Lokasi eksekusi program dari folder `src`, Silahkan pindahkan folder `src/db` dan `src.exe` di dalam foldern `src/bin/Release` untuk mengganti path jika terjadi perbedaan path pada berkas_citra.
 2. Program menggunakan Database berupa `test.db`. Jika ingin mengganti database, silahkan replace file tersebut dengan nama yang sama.
+3. Program menggunakan Database berekstensi `.db`. Pembuat menggunakan kakas [mysql2sqlite](https://github.com/dumblob/mysql2sqlite)
 
 ## Petunjuk Cara Menjalankan Program dan lainnya
 
