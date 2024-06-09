@@ -22,7 +22,7 @@ Tugas Besar 3 IF2211 Strategi Algoritma - String Matching dan Regex
 * [Cara Penggunaan](#cara-menjalankan-program)
 
 ## Deskripsi Singkat
-Program ini merupakan tugas besar 3 dari mata kuliah IF2211 Strategi Algoritma. Program ini berfungsi untuk Mencari identitas dari pemilik sidik jari yang di-input oleh pengguna. 
+Program ini merupakan tugas besar 3 dari mata kuliah IF2211 Strategi Algoritma. Program ini berfungsi untuk mencari identitas dari pemilik sidik jari yang di-input oleh pengguna. Pengguna dapat memilih algoritma pattern matching yang digunakan; antara algoritma Knuth Morris Pratt atau Boyer Moore. Program juga menggunakan regular expression dalam penelusuran basis data, yaitu untuk mencocokkan data yang benar dengan data yang corrupt.
 
 ## Informasi Tambahan
 - Program dibuat dengan : dotnet 8.0.206
