@@ -26,10 +26,10 @@ namespace src{
                 }
             }
 
-            Console.WriteLine("Result " + result.Item1 + " " + result.Item2 + " " + cocok);
-            return (result.Item1, result.Item2, cocok);
+            /*Console.WriteLine("Result " + result.Item1 + " " + result.Item2 + " " + cocok);
+            return (result.Item1, result.Item2, cocok);*/
 
-            // kalo kmp/bm gadapet, baru nyoba pake lcs, cari yang paling panjang
+            /*// kalo kmp/bm gadapet, baru nyoba pake lcs, cari yang paling panjang
             if (result.Item1 == ""){
                 int longestcs = -1;
                 foreach((String, String) imageItr in a){
@@ -48,10 +48,27 @@ namespace src{
                 } 
                 cocok = longestcs/Convert.ToDouble(Math.Min(asciiFull.Length, result.Item1.Length)); 
                 
+            }*/
+
+            // hamming distance
+            if (result.Item1 == "")
+            {
+                int minDist = -1;
+                foreach ((String, String) imageItr in a)
+                {
+                    String temp = ImageToBinaryString(imageItr.Item1);
+
+                    int res = hammingDistance(temp, asciiFull);
+                    if (minDist == -1 || res < minDist)
+                    {
+                        minDist = res; result = imageItr;
+                        Double maxSize = Math.Max(asciiFull.Length, result.Item1.Length);
+                        cocok = ((maxSize - minDist) / maxSize);
+                    }
+                }
+
             }
-            // di sini query resultnya, terus return nama yang ada di resultnya
-            // placeholder
-            
+
             return (result.Item1, result.Item2, cocok);
         }
 
@@ -99,6 +116,23 @@ namespace src{
 
         public static string ConvertImageTo30Ascii(string imagepath){
             return FindMostUniqueSubstring(ImageToBinaryString(imagepath));
+        }
+
+        // takes ascii string as input
+        private static int hammingDistance(String str1, String str2)
+        {
+            int count = Math.Abs(str1.Length - str2.Length);
+            int n = Math.Min(str1.Length, str2.Length);
+            
+            for (int i = 0; i < n; i++)
+            {
+                if (str1[i] != str2[i])
+                {
+                    count++;
+                }
+            }
+
+            return count;
         }
     }
 }

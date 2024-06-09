@@ -14,6 +14,7 @@ namespace src
         private String opsi_pencarian;
         public MainForm()
         {
+
             Directory.SetCurrentDirectory("../../");
 
            /* var connection = new SQLiteConnection("Data Source=db/test.db;Version=3;");
@@ -71,20 +72,28 @@ namespace src
                 return;
             }
 
+            reset_Display();
             var timer = new Stopwatch();
             timer.Start();
             (String, String, double) result = ("","",0.0);
             result = Converter.selectBerkasFromFingerprint(pictureBox2.ImageLocation, this.opsi_pencarian);
             timer.Stop();
 
-            pictureBox1.ImageLocation = result.Item1;
-            String persentase = (result.Item3 * 100).ToString() + "%";
-
             TimeSpan elapsed = timer.Elapsed;
             String waktu = elapsed.ToString(@"m\:ss\.fff");
 
-            label2.Text = "Persentase kecocokan : " + persentase;
             label1.Text = "Waktu pencarian : " + waktu;
+
+            // if tidak ada yang cukup cocok
+            if (result.Item3 <= 0.70)
+            {
+                MessageBox.Show("Sidik jari tidak ditemukan");
+                return;
+            }
+
+            String persentase = (Math.Truncate(result.Item3 * 10000) / 100).ToString() + "%";
+            label2.Text = "Persentase kecocokan : " + persentase;
+            pictureBox1.ImageLocation = result.Item1;
 
             //NIK,  Nama,Tempat/Tgl,Kelamin,Darah,  Alamat, Agama,  Status, Kerja, Negara
             (String, String, String, String, String, String, String, String, String, String)
@@ -177,6 +186,14 @@ namespace src
             }
 
             return biodata;
+        }
+
+        private void reset_Display()
+        {
+            pictureBox1.ImageLocation = "../assets/cocok.PNG";
+            label2.Text = "Persentase kecocokan : ";
+            textBox1.Text = " List Biodata\r\n NIK: \r\n Nama:\r\n Tempat/Tgl Lahir:\r\n Jenis Kelamin:\r\n Gol Darah:\r\n" +
+    " Alamat:\r\n Agama:\r\n Status:\r\n Pekerjaan:\r\n Kewarganegaraan:";
         }
     }
 }

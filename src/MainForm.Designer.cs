@@ -52,7 +52,7 @@ namespace src
             this.titleLabel.AutoSize = true;
             this.titleLabel.BackColor = System.Drawing.Color.Transparent;
             this.titleLabel.Font = new System.Drawing.Font("Bebas", 16F);
-            this.titleLabel.Location = new System.Drawing.Point(240, 9);
+            this.titleLabel.Location = new System.Drawing.Point(369, 9);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(342, 38);
             this.titleLabel.TabIndex = 0;
@@ -97,7 +97,7 @@ namespace src
             this.pilihButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pilihButton.AutoSize = true;
             this.pilihButton.Font = new System.Drawing.Font("Bebas", 12F);
-            this.pilihButton.Location = new System.Drawing.Point(46, 366);
+            this.pilihButton.Location = new System.Drawing.Point(48, 501);
             this.pilihButton.Name = "pilihButton";
             this.pilihButton.Size = new System.Drawing.Size(150, 50);
             this.pilihButton.TabIndex = 4;
@@ -110,7 +110,7 @@ namespace src
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button1.AutoSize = true;
             this.button1.Font = new System.Drawing.Font("Bebas", 12F);
-            this.button1.Location = new System.Drawing.Point(359, 366);
+            this.button1.Location = new System.Drawing.Point(405, 501);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(150, 50);
             this.button1.TabIndex = 6;
@@ -122,9 +122,10 @@ namespace src
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(526, 366);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(584, 492);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(142, 20);
+            this.label1.Size = new System.Drawing.Size(178, 25);
             this.label1.TabIndex = 7;
             this.label1.Text = "Waktu Pencarian : ";
             // 
@@ -132,11 +133,12 @@ namespace src
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.Control;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(445, 80);
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(589, 81);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(266, 226);
+            this.textBox1.Size = new System.Drawing.Size(424, 300);
             this.textBox1.TabIndex = 8;
             this.textBox1.Text = " List Biodata\r\n NIK: \r\n Nama:\r\n Tempat/Tgl Lahir:\r\n Jenis Kelamin:\r\n Gol Darah:\r\n" +
     " Alamat:\r\n Agama:\r\n Status:\r\n Pekerjaan:\r\n Kewarganegaraan:";
@@ -145,18 +147,19 @@ namespace src
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(526, 395);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(584, 521);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(185, 20);
+            this.label2.Size = new System.Drawing.Size(231, 25);
             this.label2.TabIndex = 9;
             this.label2.Text = "Persentase Kecocokan : ";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(247, 81);
+            this.pictureBox1.Location = new System.Drawing.Point(320, 81);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(150, 225);
+            this.pictureBox1.Size = new System.Drawing.Size(200, 300);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
@@ -166,7 +169,7 @@ namespace src
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(46, 81);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(150, 225);
+            this.pictureBox2.Size = new System.Drawing.Size(200, 300);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 11;
             this.pictureBox2.TabStop = false;
@@ -176,7 +179,7 @@ namespace src
             this.radioButton1.BackColor = System.Drawing.Color.Transparent;
             this.radioButton1.Checked = true;
             this.radioButton1.Font = new System.Drawing.Font("Bebas", 12F);
-            this.radioButton1.Location = new System.Drawing.Point(208, 365);
+            this.radioButton1.Location = new System.Drawing.Point(221, 501);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(69, 50);
             this.radioButton1.TabIndex = 14;
@@ -189,7 +192,7 @@ namespace src
             // 
             this.radioButton2.BackColor = System.Drawing.Color.Transparent;
             this.radioButton2.Font = new System.Drawing.Font("Bebas", 12F);
-            this.radioButton2.Location = new System.Drawing.Point(274, 365);
+            this.radioButton2.Location = new System.Drawing.Point(311, 501);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(79, 50);
             this.radioButton2.TabIndex = 15;
@@ -203,7 +206,7 @@ namespace src
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1058, 584);
             this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.pictureBox2);
