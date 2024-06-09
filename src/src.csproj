@@ -88,7 +88,6 @@
     <Compile Include="Converter.cs" />
     <Compile Include="DatabaseManager.cs" />
     <Compile Include="KMPString.cs" />
-    <Compile Include="LCS.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
