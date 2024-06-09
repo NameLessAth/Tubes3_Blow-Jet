@@ -5,9 +5,6 @@ namespace src
 {
     class BoyerMooreString
     {
-        // public static void Main(String[] args){
-        //     Console.WriteLine(Search("bajingan", "ngan"));
-        // }
         private static int NO_OF_CHARS = 256;
 
         private static void BadCharHeuristic(string str, int size, int[] badChar)
