@@ -26,30 +26,6 @@ namespace src{
                 }
             }
 
-            /*Console.WriteLine("Result " + result.Item1 + " " + result.Item2 + " " + cocok);
-            return (result.Item1, result.Item2, cocok);*/
-
-            /*// kalo kmp/bm gadapet, baru nyoba pake lcs, cari yang paling panjang
-            if (result.Item1 == ""){
-                int longestcs = -1;
-                foreach((String, String) imageItr in a){
-                    String temp = ImageToBinaryString(imageItr.Item1);
-                    int[, ] L = new int[temp.Length + 1, asciiFull.Length + 1];
-                    for (int i = 0; i <= temp.Length; i++) {
-                        for (int j = 0; j <= asciiFull.Length; j++) {
-                            L[i, j] = -1;
-                        }
-                    }
-
-                    int lcsRes = LCS.lcsDP(temp.ToCharArray(), asciiFull.ToCharArray(), temp.Length, asciiFull.Length, L);
-                    if (lcsRes > longestcs){
-                        longestcs = lcsRes; result = imageItr;
-                    } 
-                } 
-                cocok = longestcs/Convert.ToDouble(Math.Min(asciiFull.Length, result.Item1.Length)); 
-                
-            }*/
-
             // hamming distance
             if (result.Item1 == "")
             {
@@ -75,7 +51,7 @@ namespace src{
         static String ImageToBinaryString(string imagePath){
             Image<Rgba32> image = Image.Load<Rgba32>(imagePath);
             String binaryTemp = "";
-            
+
             for (int i = 0; i < image.Height; i++){
                 for (int j = 0; j < image.Width; j++){
                     Rgba32 pixelColor = image[j, i];
@@ -114,16 +90,11 @@ namespace src{
             return input.Substring(bestI, 30);
         }
 
-        public static string ConvertImageTo30Ascii(string imagepath){
-            return FindMostUniqueSubstring(ImageToBinaryString(imagepath));
-        }
-
-        // takes ascii string as input
         private static int hammingDistance(String str1, String str2)
         {
             int count = Math.Abs(str1.Length - str2.Length);
             int n = Math.Min(str1.Length, str2.Length);
-            
+
             for (int i = 0; i < n; i++)
             {
                 if (str1[i] != str2[i])

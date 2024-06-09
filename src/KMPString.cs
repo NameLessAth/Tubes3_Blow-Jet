@@ -3,10 +3,6 @@ using System.Collections.Generic;
 
 namespace src{
     class KMPString{        
-        // public static void Main(String[] args){
-        //     // ini ngeconvert image ke 
-        //     Console.WriteLine(KMPmatching("asu", "su"));
-        // }
         public static List<int> BuildKMP(String arg){
             List<int> temp = new List<int>();
             temp.Add(0);
