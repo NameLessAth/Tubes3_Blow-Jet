@@ -17,11 +17,6 @@ namespace src
 
             Directory.SetCurrentDirectory("../../");
 
-           /* var connection = new SQLiteConnection("Data Source=db/test.db;Version=3;");
-            connection.Open();
-            DatabaseManager.InsertBiodata(connection, 
-                "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test");*/
-
             this.opsi_pencarian = "BM";
             InitializeComponent();
         }
@@ -136,18 +131,13 @@ namespace src
                         {
                             string name = reader.GetString(reader.GetOrdinal("nama"));
 
-                            /*Console.WriteLine("Test");
-                            Console.WriteLine(nama);
-                            Console.WriteLine(name);*/
-
-                            // input = name, pattern = nama
+                            // fix alay angka dari data database
                             String patternAlay = "[0123456]|[a-z]";
                             string input = Regex.Replace(name, patternAlay, new MatchEvaluator(StringConversion.Program.replacement));
 
+                            // modify pattern supaya match dengan singkatan
                             String patternSingkat = "[aiueo]";
                             string pattern = Regex.Replace(nama, patternSingkat, match => match+"?");
-                            /*Console.WriteLine(input);
-                            Console.WriteLine(pattern);*/
 
                             bool matchNama = Regex.IsMatch(input, pattern);
                             
@@ -177,12 +167,6 @@ namespace src
                         }
                     }
                 }
-
-                /*Console.WriteLine("Here");
-                foreach ((String, String) s in temp)
-                {
-                    Console.WriteLine(s.Item1, s.Item2);
-                }*/
             }
 
             return biodata;
