@@ -94,7 +94,7 @@ namespace src{
                 command.ExecuteNonQuery();
             }
         }
-        static void InsertBiodata(SQLiteConnection connection, string nik, string nama, string tempat_lahir, string tanggal_lahir, string jenis_kelamin, string golongan_darah, string alamat, string agama, string status_perkawinan, string pekerjaan, string kewarganegaraan)
+        public static void InsertBiodata(SQLiteConnection connection, string nik, string nama, string tempat_lahir, string tanggal_lahir, string jenis_kelamin, string golongan_darah, string alamat, string agama, string status_perkawinan, string pekerjaan, string kewarganegaraan)
         {
             string insertQuery = @"
                 INSERT INTO biodata (NIK, nama, tempat_lahir, tanggal_lahir, jenis_kelamin, golongan_darah, alamat, agama, status_perkawinan, pekerjaan, kewarganegaraan) 

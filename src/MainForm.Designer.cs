@@ -217,6 +217,8 @@ namespace src
             this.Controls.Add(this.outputLabel);
             this.Controls.Add(this.masukanLabel);
             this.Controls.Add(this.titleLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "BlowJet Biometrics";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace src{
     class Converter{
-        public static (String, double) selectBerkasFromFingerprint(String imagePath, String algo){
+        public static (String, String, double) selectBerkasFromFingerprint(String imagePath, String algo){
             // ini ngeconvert ke 30 ascii querynya
             String asciiFull = ImageToBinaryString(imagePath);
             String asciiQuery = FindMostUniqueSubstring(asciiFull);
@@ -26,8 +26,8 @@ namespace src{
                 }
             }
 
-            Console.WriteLine(result.Item2,cocok);
-            return (result.Item2, cocok);
+            Console.WriteLine("Result " + result.Item1 + " " + result.Item2 + " " + cocok);
+            return (result.Item1, result.Item2, cocok);
 
             // kalo kmp/bm gadapet, baru nyoba pake lcs, cari yang paling panjang
             if (result.Item1 == ""){
@@ -39,7 +39,8 @@ namespace src{
                         for (int j = 0; j <= asciiFull.Length; j++) {
                             L[i, j] = -1;
                         }
-                    } 
+                    }
+
                     int lcsRes = LCS.lcsDP(temp.ToCharArray(), asciiFull.ToCharArray(), temp.Length, asciiFull.Length, L);
                     if (lcsRes > longestcs){
                         longestcs = lcsRes; result = imageItr;
@@ -51,7 +52,7 @@ namespace src{
             // di sini query resultnya, terus return nama yang ada di resultnya
             // placeholder
             
-            return (result.Item2, cocok);
+            return (result.Item1, result.Item2, cocok);
         }
 
         static String ImageToBinaryString(string imagePath){

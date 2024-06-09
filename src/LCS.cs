@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace src{
     class LCS{
-        public static int lcsDP(char[] X, char[] Y, int m, int n, int[, ] L) {
+        public static int lcsDP(char[] X, char[] Y, int m, int n, int[,] L) {
             if (m == 0 || n == 0) return 0;
             if (L[m, n] != -1) return L[m, n];
             if (X[m - 1] == Y[n - 1]) {

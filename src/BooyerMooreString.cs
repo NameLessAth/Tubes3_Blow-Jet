@@ -21,6 +21,9 @@ namespace src
 
         public static int Search(string text, string pattern)
         {
+            /*Console.WriteLine("Here");
+            Console.WriteLine("Text " + text);
+            Console.WriteLine("Pattern " + pattern);*/
             int m = pattern.Length;
             int n = text.Length;
 
